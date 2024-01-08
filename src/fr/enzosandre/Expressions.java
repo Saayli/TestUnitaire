@@ -19,8 +19,8 @@ public class Expressions {
 
     public static String GoodBye(MomentDeLaJournée momentDeLaJournée) {
         return switch (momentDeLaJournée) {
-            case Matin -> "Good morning";
-            case AprèsMidi -> "Have a nice days";
+            case Matin -> "Have a good morning";
+            case AprèsMidi -> "Have a nice day";
             case Soir, Nuit -> "Pleasant night";
             default -> "Good bye";
         };
