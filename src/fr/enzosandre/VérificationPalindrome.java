@@ -2,9 +2,11 @@ package fr.enzosandre;
 
 public class VérificationPalindrome {
     private final LangueInterface langue;
+    private final MomentDeLaJournée moment;
 
     public VérificationPalindrome(LangueInterface langue, MomentDeLaJournée moment) {
         this.langue = langue;
+        this.moment = moment;
     }
 
     public String Vérifier(String chaîne) {
@@ -23,7 +25,7 @@ public class VérificationPalindrome {
             resultBuilder.append(System.lineSeparator());
         }
 
-        resultBuilder.append(Expressions.AuRevoir);
+        resultBuilder.append(this.langue.AuRevoir());
         return resultBuilder.toString();
     }
 }

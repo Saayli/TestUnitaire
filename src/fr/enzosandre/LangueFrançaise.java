@@ -12,6 +12,11 @@ public class LangueFrançaise implements LangueInterface {
     }
 
     @Override
+    public String AuRevoir() {
+        return Expressions.AuRevoir;
+    }
+
+    @Override
     public String toString() {
         return "Langue Française";
     }
