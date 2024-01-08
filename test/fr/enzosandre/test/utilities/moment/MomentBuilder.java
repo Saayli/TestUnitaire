@@ -1,4 +1,4 @@
-package fr.enzosandre.test.utilities.moment;
+    package fr.enzosandre.test.utilities.moment;
 
 import fr.enzosandre.MomentDeLaJournée;
 

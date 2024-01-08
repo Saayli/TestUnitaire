@@ -1,4 +1,4 @@
-package fr.enzosandre.test.utilities;
+package fr.enzosandre.test.utilities.langue;
 
 import fr.enzosandre.LangueInterface;
 import fr.enzosandre.MomentDeLaJournée;
@@ -26,6 +26,11 @@ public class LangueFake implements LangueInterface {
         if(valeur != null) return valeur;
 
         return this.comportementParDéfaut.Saluer(moment);
+    }
+
+    @Override
+    public String AuRevoir(MomentDeLaJournée moment) {
+        return null;
     }
 
     public void FéliciterAvec(String félicitations) {

@@ -1,4 +1,4 @@
-package fr.enzosandre.test.utilities;
+package fr.enzosandre.test.utilities.langue;
 
 import fr.enzosandre.LangueInterface;
 import fr.enzosandre.MomentDeLaJournée;
