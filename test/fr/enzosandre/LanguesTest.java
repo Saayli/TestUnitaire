@@ -30,12 +30,16 @@ public class LanguesTest {
 
     static Stream<Arguments> casTestBonjour(){
         return Stream.of(
-                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Inconnu, Expressions.Bonjour),
-                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Matin, Expressions.Bonjour),
-                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.AprèsMidi, Expressions.Bonjour),
-                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Soir, Expressions.Bonsoir),
-                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Nuit, Expressions.Bonsoir),
-                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Matin, Expressions.Hello)
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Inconnu, "Bonjour"),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.AprèsMidi, "Bonjour"),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Soir, "Bonsoir"),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Nuit, "Bonsoir"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Inconnu, "Hello"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.AprèsMidi, "Good afternoon"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Soir, "Good evening"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Nuit, "Good evening")
         );
     }
 

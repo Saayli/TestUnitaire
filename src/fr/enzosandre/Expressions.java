@@ -1,7 +1,6 @@
 package fr.enzosandre;
 
 import com.sun.nio.sctp.SendFailedNotification;
-import lombok.AllArgsConstructor;
 
 import static fr.enzosandre.MomentDeLaJournée.*;
 
