@@ -54,4 +54,31 @@ public class LanguesTest {
         // ALORS on obtient <salutations>
         assertEquals(résultat, salutation);
     }
+
+    static Stream<Arguments> casTestAuRevoir(){
+        return Stream.of(
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Inconnu, "Au revoir"),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonne fin de matinée"),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.AprèsMidi, "Bonne fin de journée"),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Soir, "Bonne nuit"),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Nuit, "Bonne nuit"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Matin, "Have a good morning"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Inconnu, "Good bye"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.AprèsMidi, "Have a nice day"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Soir, "Pleasant night"),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Nuit, "Pleasant night")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("casTestAuRevoir")
+    public void testAurevoir(LangueInterface langue, MomentDeLaJournée moment, String aurevoir){
+        // ETANT DONNE la <langue>
+        // ET le <momentDeLaJournée>
+        // QUAND on salue
+        var résultat = langue.AuRevoir(moment);
+
+        // ALORS on obtient <salutations>
+        assertEquals(résultat, aurevoir);
+    }
 }
