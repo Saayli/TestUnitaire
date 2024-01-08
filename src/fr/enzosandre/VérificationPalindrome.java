@@ -12,6 +12,11 @@ public class VérificationPalindrome {
         this.moment = MomentDeLaJournée.getMoment(lt);
     }
 
+    public VérificationPalindrome(LangueInterface langue, MomentDeLaJournée momentDeLaJournée) {
+        this.langue = langue;
+        this.moment = momentDeLaJournée;
+    }
+
     public String Vérifier(String chaîne) {
         String miroir =  new StringBuilder(chaîne)
                 .reverse()
