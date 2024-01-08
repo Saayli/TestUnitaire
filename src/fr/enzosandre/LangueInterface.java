@@ -3,7 +3,7 @@ package fr.enzosandre;
 public interface LangueInterface {
     String Féliciter();
 
-    String Saluer();
+    String Saluer(MomentDeLaJournée moment);
 
-    String AuRevoir();
+    String AuRevoir(MomentDeLaJournée moment);
 }

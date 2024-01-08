@@ -1,12 +1,15 @@
 package fr.enzosandre;
 
+import java.sql.Timestamp;
+import java.time.LocalTime;
+
 public class VérificationPalindrome {
     private final LangueInterface langue;
     private final MomentDeLaJournée moment;
 
-    public VérificationPalindrome(LangueInterface langue, MomentDeLaJournée moment) {
+    public VérificationPalindrome(LangueInterface langue, LocalTime lt) {
         this.langue = langue;
-        this.moment = moment;
+        this.moment = MomentDeLaJournée.getMoment(lt);
     }
 
     public String Vérifier(String chaîne) {
@@ -15,7 +18,7 @@ public class VérificationPalindrome {
                 .toString();
 
         StringBuilder resultBuilder = new StringBuilder();
-        resultBuilder.append(this.langue.Saluer());
+        resultBuilder.append(this.langue.Saluer(moment));
         resultBuilder.append(System.lineSeparator());
         resultBuilder.append(miroir);
         resultBuilder.append(System.lineSeparator());
@@ -25,7 +28,7 @@ public class VérificationPalindrome {
             resultBuilder.append(System.lineSeparator());
         }
 
-        resultBuilder.append(this.langue.AuRevoir());
+        resultBuilder.append(this.langue.AuRevoir(moment));
         return resultBuilder.toString();
     }
 }
