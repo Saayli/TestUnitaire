@@ -29,7 +29,7 @@ public class MomentsTest {
 
     @ParameterizedTest
     @MethodSource("casTestMatin")
-    public void testMatin(String momentAttendu, LocalTime lt) {
+    public void testMatin(MomentDeLaJournée momentAttendu, LocalTime lt) {
         // ETANT DONNE la <langue>
         // QUAND on félicite
         var momentObtenues = MomentDeLaJournée.getMoment(lt);
@@ -51,7 +51,7 @@ public class MomentsTest {
 
     @ParameterizedTest
     @MethodSource("casTestApresMidi")
-    public void testApresMidi(String momentAttendu, LocalTime lt) {
+    public void testApresMidi(MomentDeLaJournée momentAttendu, LocalTime lt) {
         // ETANT DONNE la <langue>
         // QUAND on félicite
         var momentObtenues = MomentDeLaJournée.getMoment(lt);
@@ -73,7 +73,7 @@ public class MomentsTest {
 
     @ParameterizedTest
     @MethodSource("casTestSoir")
-    public void testSoir(String momentAttendu, LocalTime lt) {
+    public void testSoir(MomentDeLaJournée momentAttendu, LocalTime lt) {
         // ETANT DONNE la <langue>
         // QUAND on félicite
         var momentObtenues = MomentDeLaJournée.getMoment(lt);
@@ -95,7 +95,7 @@ public class MomentsTest {
 
     @ParameterizedTest
     @MethodSource("casTestNuit")
-    public void testNuit(String momentAttendu, LocalTime lt) {
+    public void testNuit(MomentDeLaJournée momentAttendu, LocalTime lt) {
         // ETANT DONNE la <langue>
         // QUAND on félicite
         var momentObtenues = MomentDeLaJournée.getMoment(lt);
