@@ -73,9 +73,21 @@ public class DétectionPalindromeTest {
     static Stream<Arguments> casTestBonjour() {
         return Stream.of(
                 Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
+                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Nuit, "Bonsoir"),
+                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.AprèsMidi, "Bonjour"),
+                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Soir, "Bonsoir"),
                 Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Nuit, "Bonsoir"),
+                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.AprèsMidi, "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Soir, "Bonsoir"),
                 Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning"),
-                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning")
+                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Nuit, "Good evening"),
+                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.AprèsMidi, "Good afternoon"),
+                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Soir, "Good evening"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Nuit, "Good evening"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.AprèsMidi, "Good afternoon"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Soir, "Good evening")
         );
     }
 
@@ -102,9 +114,21 @@ public class DétectionPalindromeTest {
     static Stream<Arguments> casTestBonjourSelonHeure() {
         return Stream.of(
                 Arguments.of("test", new LangueFrançaise(), LocalTime.of(8, 0, 0), "Bonjour"),
-                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(4,0,0), "Bonjour"),
-                Arguments.of("test", new LangueAnglaise(), LocalTime.of(12,0,0), "Good morning"),
-                Arguments.of("test", new LangueAnglaise(), LocalTime.of(19,0,0), "Good morning")
+                Arguments.of("test", new LangueFrançaise(), LocalTime.of(4,0,0), "Bonsoir"),
+                Arguments.of("test", new LangueFrançaise(), LocalTime.of(12,0,0), "Bonjour"),
+                Arguments.of("test", new LangueFrançaise(), LocalTime.of(19,0,0), "Bonsoir"),
+                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(8, 0, 0), "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(4,0,0), "Bonsoir"),
+                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(12,0,0), "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(19,0,0), "Bonsoir"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(8, 0, 0), "Good morning"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(4,0,0), "Good evening"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(12,0,0), "Good afternoon"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(19,0,0), "Good evening"),
+                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(8, 0, 0), "Good morning"),
+                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(4,0,0), "Good evening"),
+                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(12,0,0), "Good afternoon"),
+                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(19,0,0), "Good evening")
         );
     }
 
@@ -131,10 +155,18 @@ public class DétectionPalindromeTest {
 
     static Stream<Arguments> casTestAurevoir() {
         return Stream.of(
-                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
-                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
-                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning"),
-                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning")
+                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonne fin de matinée"),
+                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.AprèsMidi, "Bonne fin de journée"),
+                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Soir, "Bonne nuit"),
+                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonne fin de matinée"),
+                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.AprèsMidi, "Bonne fin de journée"),
+                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Soir, "Bonne nuit"),
+                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Matin, "Have a good morning"),
+                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.AprèsMidi, "Have a nice day"),
+                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Soir, "Pleasant night"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Matin, "Have a good morning"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.AprèsMidi, "Have a nice day"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Soir, "Pleasant night")
         );
     }
 
@@ -150,23 +182,23 @@ public class DétectionPalindromeTest {
         String résultat =  vérification.Vérifier(chaîne);
 
         String[] lines = résultat.split(System.lineSeparator());
-        assertEquals(expression, lines[0]);
+        assertEquals(expression, lines[lines.length - 1]);
     }
 
     static Stream<Arguments> casTestAuRevoirSelonHeure() {
         return Stream.of(
-                Arguments.of("test", new LangueFrançaise(), LocalTime.of(9, 0, 0), "Bonne fin de matinée"),
-                Arguments.of("test", new LangueFrançaise(), LocalTime.of(15,0,0), "Bonne fin de journée"),
-                Arguments.of("test", new LangueFrançaise(), LocalTime.of(23,0,0), "Bonne nuit"),
-                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(9, 0, 0), "Bonne fin de matinée"),
-                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(15,0,0), "Bonne fin de journée"),
-                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(23,0,0), "Bonne nuit"),
-                Arguments.of("test", new LangueAnglaise(), LocalTime.of(9, 0, 0), "Have a good morning"),
-                Arguments.of("test", new LangueAnglaise(), LocalTime.of(15,0,0), "Have a nice day"),
-                Arguments.of("test", new LangueAnglaise(), LocalTime.of(23,0,0), "Pleasant night"),
-                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(9, 0, 0), "Have a good morning"),
-                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(15,0,0), "Have a nice day"),
-                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(23,0,0), "Pleasant night")
+                Arguments.of("test", new LangueFrançaise(), LocalTime.of(9, 0, 0), "Bonjour"),
+                Arguments.of("test", new LangueFrançaise(), LocalTime.of(15,0,0), "Bonjour"),
+                Arguments.of("test", new LangueFrançaise(), LocalTime.of(23,0,0), "Bonsoir"),
+                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(9, 0, 0), "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(15,0,0), "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(23,0,0), "Bonsoir"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(9, 0, 0), "Good morning"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(15,0,0), "Good afternoon"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(23,0,0), "Good evening"),
+                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(9, 0, 0), "Good morning"),
+                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(15,0,0), "Good afternoon"),
+                Arguments.of("radar", new LangueAnglaise(), LocalTime.of(23,0,0), "Good evening")
         );
     }
 
@@ -189,5 +221,29 @@ public class DétectionPalindromeTest {
         // dans cette <langue> à ce moment de la journée
         String[] lines = résultat.split(System.lineSeparator());
         assertEquals(salutations, lines[0]);
+    }
+
+    static Stream<Arguments> testBreakLine() {
+        return Stream.of(
+                Arguments.of("test", new LangueFrançaise(), "Bien dit !"),
+                Arguments.of("radar", new LangueFrançaise(), "Bien dit !"),
+                Arguments.of("test", new LangueAnglaise(), "Well said !"),
+                Arguments.of("radar", new LangueAnglaise(), "Well said !")
+        );
+    }
+    @ParameterizedTest
+    @MethodSource("testBreakLine")
+    @DisplayName("On saute une ligne après les félicitations")
+    public void testBreakLine(String chaîne, LangueInterface langue, String félicitations){
+        // ETANT DONNE une chaîne
+        var vérification = new VérificationPalindromeBuilder()
+                .AyantPourLangue(langue)
+                .Build();
+
+        // QUAND on vérifie si c'est un palindrome
+        String résultat =  vérification.Vérifier(chaîne);
+
+        // ALORS la reponse comporte un saut de ligne
+        assertTrue(résultat.contains(System.lineSeparator()));
     }
 }
