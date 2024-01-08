@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -98,6 +99,35 @@ public class DétectionPalindromeTest {
         String[] lines = résultat.split(System.lineSeparator());
         assertEquals(salutations, lines[0]);
     }
+    static Stream<Arguments> casTestBonjourSelonHeure() {
+        return Stream.of(
+                Arguments.of("test", new LangueFrançaise(), LocalTime.of(8, 0, 0), "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), LocalTime.of(4,0,0), "Bonjour"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(12,0,0), "Good morning"),
+                Arguments.of("test", new LangueAnglaise(), LocalTime.of(19,0,0), "Good morning")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("casTestBonjourSelonHeure")
+    @DisplayName("Avant toute chose, on salue selon l'heure")
+    public void testBonjourSelonHeure(String chaîne, LangueInterface langue, LocalTime momentDeLaJournée, String salutations){
+        // ETANT DONNE une chaîne
+        // ET un utilisateur parlant une <langue>
+        // ET que nous sommes le <momentDeLaJournée>
+        var vérification = new VérificationPalindromeBuilder()
+                .AyantPourLangue(langue)
+                .AyantPourMoment(momentDeLaJournée)
+                .Build();
+
+        // QUAND on vérifie si c'est un palindrome
+        String résultat =  vérification.Vérifier(chaîne);
+
+        // ALORS toute réponse est précédée de <salutations>
+        // dans cette <langue> à ce moment de la journée
+        String[] lines = résultat.split(System.lineSeparator());
+        assertEquals(salutations, lines[0]);
+    }
 
     static Stream<Arguments> casTestAurevoir() {
         return Stream.of(
@@ -122,4 +152,6 @@ public class DétectionPalindromeTest {
         String[] lines = résultat.split(System.lineSeparator());
         assertEquals(expression, lines[0]);
     }
+
+
 }

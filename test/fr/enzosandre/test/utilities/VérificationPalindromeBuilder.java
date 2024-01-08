@@ -6,6 +6,8 @@ import fr.enzosandre.VérificationPalindrome;
 import fr.enzosandre.test.utilities.langue.LangueBuilder;
 import fr.enzosandre.test.utilities.moment.MomentBuilder;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.function.Function;
 
 public class VérificationPalindromeBuilder {
@@ -23,6 +25,11 @@ public class VérificationPalindromeBuilder {
 
     public VérificationPalindromeBuilder AyantPourMomentDeLaJournée(MomentDeLaJournée momentDeLaJournée) {
         this.moment = momentDeLaJournée;
+        return this;
+    }
+
+    public VérificationPalindromeBuilder AyantPourMoment(LocalTime ldt) {
+        this.moment = MomentDeLaJournée.getMoment(ldt);
         return this;
     }
 

@@ -3,9 +3,6 @@ package fr.enzosandre.test.utilities.langue;
 import fr.enzosandre.LangueInterface;
 import fr.enzosandre.MomentDeLaJournée;
 
-import java.util.Dictionary;
-import java.util.Optional;
-
 public class LangueBuilder {
     private LangueFake langue = new LangueFake();
 
