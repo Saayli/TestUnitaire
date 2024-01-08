@@ -1,6 +1,7 @@
-package fr.enzosandre.test.utilities.langue;
+package fr.enzosandre.test.utilities;
 
 import fr.enzosandre.LangueInterface;
+import fr.enzosandre.MomentDeLaJournée;
 
 public class LangueStub implements LangueInterface {
     @Override
@@ -9,13 +10,7 @@ public class LangueStub implements LangueInterface {
     }
 
     @Override
-    public String Saluer() {
+    public String Saluer(MomentDeLaJournée moment) {
         return "";
     }
-
-    @Override
-    public String AuRevoir() {
-        return "";
-    }
-
 }

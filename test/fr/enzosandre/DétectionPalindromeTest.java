@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -70,10 +71,10 @@ public class DétectionPalindromeTest {
 
     static Stream<Arguments> casTestBonjour() {
         return Stream.of(
-                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Matin, Expressions.Bonjour),
-                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Matin, Expressions.Bonjour),
-                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Matin, Expressions.Hello),
-                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Matin, Expressions.Hello)
+                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
+                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning")
         );
     }
 
@@ -98,17 +99,27 @@ public class DétectionPalindromeTest {
         assertEquals(salutations, lines[0]);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"test", "radar"})
-    @DisplayName("Après avoir répondu, on s'acquitte")
-    public void testAuRevoir(String chaîne){
-        // ETANT DONNE une chaîne
-        // QUAND on vérifie si c'est un palindrome
-        String résultat =  VérificationPalindromeBuilder.Default().Vérifier(chaîne);
+    static Stream<Arguments> casTestAurevoir() {
+        return Stream.of(
+                Arguments.of("test", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
+                Arguments.of("radar", new LangueFrançaise(), MomentDeLaJournée.Matin, "Bonjour"),
+                Arguments.of("test", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning"),
+                Arguments.of("radar", new LangueAnglaise(), MomentDeLaJournée.Matin, "Good morning")
+        );
+    }
 
-        // ALORS toute réponse est suivie de "Au Revoir"
+    @ParameterizedTest
+    @MethodSource("casTestAurevoir")
+    @DisplayName("Après avoir répondu, on s'acquitte")
+    public void testAuRevoir(String chaîne, LangueInterface langue, MomentDeLaJournée momentDeLaJournée, String expression){
+        var vérification = new VérificationPalindromeBuilder()
+                .AyantPourLangue(langue)
+                .AyantPourMomentDeLaJournée(momentDeLaJournée)
+                .Build();
+
+        String résultat =  vérification.Vérifier(chaîne);
+
         String[] lines = résultat.split(System.lineSeparator());
-        String lastLine = lines[lines.length - 1];
-        assertEquals(Expressions.AuRevoir, lastLine);
+        assertEquals(expression, lines[0]);
     }
 }

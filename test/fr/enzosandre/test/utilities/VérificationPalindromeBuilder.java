@@ -4,12 +4,13 @@ import fr.enzosandre.LangueInterface;
 import fr.enzosandre.MomentDeLaJournée;
 import fr.enzosandre.VérificationPalindrome;
 import fr.enzosandre.test.utilities.langue.LangueBuilder;
+import fr.enzosandre.test.utilities.moment.MomentBuilder;
 
 import java.util.function.Function;
 
 public class VérificationPalindromeBuilder {
     private LangueInterface langue = LangueBuilder.Default();
-    private MomentDeLaJournée moment = MomentDeLaJournée.Inconnu;
+    private MomentDeLaJournée moment = MomentBuilder.Default();
 
     public static VérificationPalindrome Default() {
         return new VérificationPalindromeBuilder().Build();

@@ -28,37 +28,26 @@ public class LanguesTest {
         assertEquals(félicitationsAttendues, félicitationsObtenues);
     }
 
-    static Stream<Arguments> casTestSalutation(){
+    static Stream<Arguments> casTestBonjour(){
         return Stream.of(
-                Arguments.of(new LangueFrançaise(), Expressions.Bonjour),
-                Arguments.of(new LangueAnglaise(), Expressions.Hello)
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Inconnu, Expressions.Bonjour),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Matin, Expressions.Bonjour),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.AprèsMidi, Expressions.Bonjour),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Soir, Expressions.Bonsoir),
+                Arguments.of(new LangueFrançaise(), MomentDeLaJournée.Nuit, Expressions.Bonsoir),
+                Arguments.of(new LangueAnglaise(), MomentDeLaJournée.Matin, Expressions.Hello)
         );
     }
+
     @ParameterizedTest
-    @MethodSource("casTestSalutation")
-    public void testSalutation(LangueInterface langue, String Attendues){
+    @MethodSource("casTestBonjour")
+    public void testBonjour(LangueInterface langue, MomentDeLaJournée moment, String salutation){
         // ETANT DONNE la <langue>
-        // QUAND on félicite
-        var res = langue.Saluer();
+        // ET le <momentDeLaJournée>
+        // QUAND on salue
+        var résultat = langue.Saluer(moment);
 
-        // ALORS on obtient <félicitationsAttendues>
-        assertEquals(Attendues, res);
-    }
-
-    static Stream<Arguments> casTestAurevoir(){
-        return Stream.of(
-                Arguments.of(new LangueFrançaise(), Expressions.AuRevoir),
-                Arguments.of(new LangueAnglaise(), Expressions.GoodBye)
-        );
-    }
-    @ParameterizedTest
-    @MethodSource("casTestAurevoir")
-    public void testAuRevoir(LangueInterface langue, String Attendues){
-        // ETANT DONNE la <langue>
-        // QUAND on félicite
-        var res = langue.AuRevoir();
-
-        // ALORS on obtient <félicitationsAttendues>
-        assertEquals(Attendues, res);
+        // ALORS on obtient <salutations>
+        assertEquals(résultat, salutation);
     }
 }

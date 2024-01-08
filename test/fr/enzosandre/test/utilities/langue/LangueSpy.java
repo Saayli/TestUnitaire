@@ -1,6 +1,7 @@
-package fr.enzosandre.test.utilities.langue;
+package fr.enzosandre.test.utilities;
 
 import fr.enzosandre.LangueInterface;
+import fr.enzosandre.MomentDeLaJournée;
 
 public class LangueSpy implements LangueInterface {
     private boolean féliciterAÉteInvoqué;
@@ -12,12 +13,7 @@ public class LangueSpy implements LangueInterface {
     }
 
     @Override
-    public String Saluer() {
-        return "";
-    }
-
-    @Override
-    public String AuRevoir() {
+    public String Saluer(MomentDeLaJournée moment) {
         return "";
     }
 
